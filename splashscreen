@@ -1,0 +1,54 @@
+import 'dart:async';
+
+import 'package:calculator/login.dart';
+import 'package:calculator/main.dart';
+import 'package:flutter/material.dart';
+
+class firstscreen extends StatefulWidget {
+  @override
+  State<firstscreen> createState() {
+    return  _firstscreenState();
+
+  }
+}
+class _firstscreenState extends State<firstscreen> {
+
+  @override
+  void initState() {
+    super.initState();
+    
+    Timer(Duration(seconds: 1),() {
+
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>login()),);
+    });
+  }
+
+  @override
+
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+      backgroundColor: Colors.white,
+      
+      // appBar: AppBar(
+      //   backgroundColor: Colors.greenAccent,
+      //   title: Center(child: Text('Application',style: TextStyle(fontSize: 30.0 ,fontWeight: FontWeight.bold),)),
+      //
+      // ),
+      body:Center(child: Container(child: Image(image: NetworkImage('https://images.5paisa.com/MarketIcons/KSOLVES.png',),width: 300,height: 300,))),
+      // body: Container(
+      //   height: double.infinity,
+      //   width: double.infinity,
+      //   color: Colors.blue,
+      //   child: IconButton(onPressed: ()
+      //   {
+      //     Navigator.push(context,MaterialPageRoute(builder: (context)=>MyHomePage()),);
+      //   }, icon: Icon(Icons.calculate_sharp,size: 100.0,),
+      //
+      //
+      //   ),
+      // ),
+
+    ) ;
+  }
+}
