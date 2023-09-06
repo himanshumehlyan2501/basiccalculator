@@ -1,0 +1,189 @@
+import 'package:calculator/main.dart';
+import 'package:calculator/signuppage.dart';
+import 'package:flutter/material.dart';
+
+void main(){
+  runApp( login());
+}
+
+class login extends StatefulWidget{
+  @override
+  State<login> createState() => _loginState();
+}
+
+class _loginState extends State<login> {
+
+  bool passwordVisible=false;
+  var email_text=TextEditingController();
+  var Password=TextEditingController();
+
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+
+        body:Center(
+
+          child: Container(
+
+            width:300,
+            child: Column(
+
+              mainAxisAlignment: MainAxisAlignment.center,
+
+
+              children: [
+                // Container(
+                //
+                //
+                //     child: Column(
+                //
+                //       // mainAxisAlignment: MainAxisAlignment.center,
+                //       // crossAxisAlignment: CrossAxisAlignment.end,
+                //       children: [
+                //         Text('Time:$time',style:TextStyle(fontSize: 15.0))
+                //       ],
+                //
+                //     )
+                // ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    width:100,
+                    height:100,
+                    child: CircleAvatar(child: Image(
+                      image: NetworkImage('https://images.5paisa.com/MarketIcons/KSOLVES.png',)
+                      ,
+
+                    ),
+
+                    ),
+                  ),
+                ),
+
+                Container(height:21),
+                TextField(
+                  controller: email_text,
+                  // enabled: false,
+                  decoration: InputDecoration(
+                    hintText: "Email",
+                    focusedBorder:OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(21),
+                        borderSide: BorderSide(
+                          color: Colors.greenAccent,
+                          width:2.0,
+                        )
+
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(21),
+                        borderSide: BorderSide(
+                          color: Colors.blueGrey,
+                          width:2.0,
+                        )),
+                    disabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(21),
+                        borderSide: BorderSide(
+                          color: Colors.brown,
+                          width:2.0,
+                        )),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(21),
+                      borderSide: BorderSide(
+                        color: Colors.redAccent,
+                        width:2.0,
+
+                      ),
+
+                    ),
+                    suffixText: "@gmail.com",
+                    prefixIcon: Icon(Icons.email,color: Colors.red,),
+                  ),
+                ),
+                Container(height:40),
+                TextField(
+                  controller: Password,
+                  obscureText: !passwordVisible,
+                  obscuringCharacter: '*',
+                  decoration: InputDecoration(
+                    hintText: "Password",
+
+                    focusedBorder:OutlineInputBorder(
+
+                        borderRadius: BorderRadius.circular(21),
+                        borderSide: BorderSide(
+                          color: Colors.greenAccent,
+                          width:2.0,
+                        )
+
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(21),
+                        borderSide: BorderSide(
+                          color: Colors.blueGrey,
+                          width:2.0,
+                        )),
+                    disabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(21),
+                        borderSide: BorderSide(
+                          color: Colors.brown,
+                          width:2.0,
+                        )),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(21),
+                        borderSide: BorderSide(
+                          color: Colors.redAccent,
+                          width:2.0,
+                        )
+                    ),
+                    suffixIcon: IconButton(onPressed: (){
+                      setState(() {
+                        passwordVisible =!passwordVisible;
+                      });
+                    },
+                      icon: Icon(Icons.remove_red_eye,color: Colors.red,),
+
+
+
+
+                    ),
+                  ),
+                ),
+
+
+
+                ElevatedButton(onPressed: (){
+                  String uemail=email_text.text.toString();
+                  String upass=Password.text.toString();
+
+
+                  print("Email:$uemail@gmail.com, Password:$upass");
+                  // setState(() {
+                  //  time=DateTime.now();
+                  // });
+                  Navigator.push(context,MaterialPageRoute(builder: (context)=>MyHomePage()));
+                  setState(() {
+
+                  });
+                }, child: Text('L O G I N')),
+                // Container(height:200,),
+
+                Padding(
+                  padding: const EdgeInsets.all(21.0),
+                  child: InkWell(
+                    child: Text('SignUp',style: TextStyle(fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red),),
+                  onTap: (){
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>signup()),);
+                  },),
+                )
+
+              ],
+            ),
+          ),
+        )
+    );
+  }
